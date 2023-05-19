@@ -1,7 +1,7 @@
 # User login & listing movies
 
-The first page dispalyed when the application runs is signup, which redirects to login after signup.
-After login it redirects to /Movies page & displays list of movies.
+The first page dispalyed when the application runs is register, which redirects to login after registration.
+After login it redirects to /Movies page & displays the user movies.
 
 ## Validations
 1. There are input validations using yup.

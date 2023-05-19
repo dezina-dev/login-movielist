@@ -13,6 +13,7 @@ import { error } from "console";
 type UserSubmitForm = {
   email: string;
   password: string;
+  movies: string[];
 };
 
 const Signup = () => {
@@ -25,6 +26,7 @@ const Signup = () => {
       .required("Password is required")
       .min(5, "Password must be at least 5 characters")
       .max(40, "Password must not exceed 40 characters"),
+      movies: Yup.string().required("Movies are required")
   });
 
   const {
@@ -37,7 +39,14 @@ const Signup = () => {
   });
 
   const onSubmit = async (data: UserSubmitForm) => {
-    let result = await dispatch(signupAction(data));
+
+    let body = {
+      email: data.email,
+      password: data.password,
+      movies: data.movies.toString().split(/[.,!,?,;'']/)
+    }
+ 
+    let result = await dispatch(signupAction(body));
 
    if (result?.payload?.id) {
       history.push("/Login");
@@ -49,7 +58,7 @@ const Signup = () => {
 
   return (
     <div className="background-signup">
-      <h2 className="signup-heading">Signup</h2>
+      <h2 className="signup-heading">Register</h2>
       <div className="register-form">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">
@@ -71,13 +80,22 @@ const Signup = () => {
             />
             <div className="invalid-feedback">{errors.password?.message}</div>
           </div>
+          <div className="form-group">
+            <label>Movies</label>
+            <input
+              type="movies"
+              {...register("movies")}
+              className={`form-control ${errors.movies ? "is-invalid" : ""}`}
+            />
+            <div className="invalid-feedback">{errors.movies?.message}</div>
+          </div>
 
           <div className="form-group-buttons">
             <button type="button" onClick={() => reset()} className="btn-reset">
               Reset
             </button>
             <button type="submit" className="btn-signup">
-              Signup
+            Register
             </button>
           </div>
         </form>

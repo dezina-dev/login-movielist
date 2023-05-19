@@ -7,6 +7,9 @@ type MovieT = {
   id: string;
   movie: string;
 };
+interface MovieI {
+  
+}
 const Movies = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
