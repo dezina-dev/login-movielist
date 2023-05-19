@@ -7,10 +7,12 @@ After login it redirects to /Movies page & displays list of movies.
 1. There are input validations using yup.
 2. There is error toast messages displayed for errors from backend in login & signup page.
 
-## Available Scripts
+## Installation
+npm install
 
-In the project directory, you can run:
+## Running the app
 
+### development
 ### `npm start`
 
 Runs the app in the development mode.\
