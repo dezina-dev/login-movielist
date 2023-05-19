@@ -1,25 +1,23 @@
 import React from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import "./Login.scss";
+import "./Signup.scss";
 import { useAppDispatch } from "../../redux/store";
-import authAction from "../../redux/actions/login.action";
+import signupAction from "../../redux/actions/signup.action";
+import { error } from "console";
 
 type UserSubmitForm = {
   email: string;
   password: string;
 };
 
-const Login = () => {
+const Signup = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
-
-  const { user } = useSelector((state: any) => state.user);
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().required("Email is required").email("Email is invalid"),
@@ -39,19 +37,19 @@ const Login = () => {
   });
 
   const onSubmit = async (data: UserSubmitForm) => {
-    let result = await dispatch(authAction(data));
+    let result = await dispatch(signupAction(data));
 
-    if (result?.payload?.access_token) {
-      history.push("/Movies");
+   if (result?.payload?.id) {
+      history.push("/Login");
     }
     else {
-      toast.error("Failed to login", { position: "top-right" });
+      toast.error("Failed to signup", { position: "top-right" });
     }
   };
 
   return (
-    <div className="background">
-      <h2>Login</h2>
+    <div className="background-signup">
+      <h2 className="signup-heading">Signup</h2>
       <div className="register-form">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">
@@ -78,14 +76,20 @@ const Login = () => {
             <button type="button" onClick={() => reset()} className="btn-reset">
               Reset
             </button>
-            <button type="submit" className="btn-login">
-              Login
+            <button type="submit" className="btn-signup">
+              Signup
             </button>
           </div>
         </form>
+      </div>
+      <div className="login-redirect">
+        <h3 className="login-text">Already registered ? </h3>
+        <button className="btn-login" onClick={() => history.push("/Login")}>
+          Login
+        </button>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

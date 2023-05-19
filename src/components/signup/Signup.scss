@@ -1,7 +1,12 @@
-.background {
+.background-signup {
     height: 700px;
     width: 100%;
-    background-image: url("https://www.pngitem.com/pimgs/m/40-407860_small-flowers-png-flowers-clipart-transparent-png.png");
+    background-image: url("https://static.vecteezy.com/system/resources/previews/007/164/537/original/fingerprint-identity-sensor-data-protection-system-podium-hologram-blue-light-and-concept-free-vector.jpg");
+}
+
+.signup-heading {
+    text-align: center;
+    color: white;
 }
 
 .invalid-feedback {
@@ -30,23 +35,29 @@ label {
     height: 20px;
 }
 
-h2 {
-    text-align: center;
-}
-
 .form-group-buttons {
     margin: auto;
     width: 50%;
     padding: 10px;
 }
 
-.btn-login {
+.btn-signup {
     width: 100px;
     height: 30px;
     background-color: blue;
     color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+.btn-login {
+    width: 100px;
+    height: 30px;
+    background-color: rgb(24, 116, 77);
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 .btn-reset {
@@ -62,4 +73,18 @@ h2 {
 label {
     width: 100px;
     display: inline-block;
+}
+
+.login-redirect {
+    background-color: beige;
+    margin: auto;
+    width: 26%;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.login-text {
+    color: black;
+    display: inline-block;
+    margin-left: 10px;
 }

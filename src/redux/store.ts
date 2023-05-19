@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
-import productSlice from "./reducers/getProducts.reducer";
+import loginSlice from "./reducers/login.reducer";
 
 const store = configureStore({
-    reducer: {
-        user: productSlice.reducer
-    },
-    devTools: true,
+  reducer: {
+    user: loginSlice.reducer,
+  },
+  devTools: true,
 });
 
 export type AppDispatch = typeof store.dispatch;
