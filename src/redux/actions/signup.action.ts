@@ -6,6 +6,7 @@ export const signupService = async (body: any) => {
   return server.post(`api/v1/users/signup`, body);
 };
 
+
 const signupAction = createAsyncThunk(
   "user/signup",
   async (body: any, thunkAPI) => {
